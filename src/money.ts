@@ -185,7 +185,7 @@ export class Money {
     };
     let decimalPlaces = 0;
     if (this.currency.minorUnit > 0) {
-      const [, fractional = ''] = this.amount.toString().split('.') as [string, string | undefined];
+      const [, fractional = ''] = this.toString().split('.') as [string, string | undefined];
       const fractionalLength = formatOptions.removeTrailingFractionalZeros
         ? fractional?.replace(/0+$/, '').length
         : this.currency.minorUnit;

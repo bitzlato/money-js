@@ -45,6 +45,7 @@ describe('Money', () => {
     const money3 = Money.fromDecimal(10.2365, USD);
     const money4 = Money.fromDecimal('10.1', USD);
     const money5 = Money.fromDecimal('10.00000100', BTC);
+    const money6 = Money.fromDecimal('0.00000083', BTC);
 
     expect(money.toString()).toEqual('10.01');
     expect(money.currency).toEqual(USD);
@@ -53,6 +54,7 @@ describe('Money', () => {
     expect(money3.toString()).toEqual('10.24');
     expect(money4.toString()).toEqual('10.10');
     expect(money5.toString()).toEqual('10.00000100');
+    expect(money6.toString()).toEqual('0.00000083');
   });
 
   test('should add same currencies correctly', () => {
@@ -175,6 +177,7 @@ describe('Money', () => {
     expect(Money.fromDecimal('1000.00010000', BTC).toFormat()).toEqual('1,000.0001');
     expect(Money.fromDecimal('10230.0', BTC).toFormat()).toEqual('10,230.00');
     expect(Money.fromDecimal('1000000', BTC).toFormat()).toEqual('1,000,000.00');
+    expect(Money.fromDecimal('0.00000083', BTC).toFormat()).toEqual('0.00000083');
     expect(
       Money.fromDecimal('1000000', BTC).toFormat({
         decimalSeparator: ',',
