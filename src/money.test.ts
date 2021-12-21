@@ -7,6 +7,11 @@ const USD = {
   minorUnit: 2,
 };
 
+const USDT = {
+  code: 'USD',
+  minorUnit: 6,
+};
+
 const BTC = {
   code: 'BTC',
   minorUnit: 8,
@@ -217,4 +222,10 @@ describe('Money', () => {
       Money.fromDecimal('123.0111', BTC).toFormat({ removeTrailingFractionalZeros: false }),
     ).toEqual('123.01110000');
   });
+
+  test('should preserve rounding mode while arithmetic operations', () => {
+    const available = Money.fromDecimal('2.44757173344', USDT, Money.ROUND_DOWN);
+    const amount = available.multiply(100).divide(100);
+    expect(amount.toString()).toEqual('2.447571');
+  })
 });
