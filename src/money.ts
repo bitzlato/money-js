@@ -109,21 +109,21 @@ export class Money {
   add(money: Money): Money {
     assertSameCurrency(this, money);
 
-    return new Money(this.amount.plus(money.amount), this.currency);
+    return new Money(this.amount.plus(money.amount), this.currency, this.roundingMode);
   }
 
   subtract(money: Money): Money {
     assertSameCurrency(this, money);
 
-    return new Money(this.amount.minus(money.amount), this.currency);
+    return new Money(this.amount.minus(money.amount), this.currency, this.roundingMode);
   }
 
   multiply(multiplier: BigSource): Money {
-    return new Money(this.amount.times(multiplier), this.currency);
+    return new Money(this.amount.times(multiplier), this.currency, this.roundingMode);
   }
 
   divide(divisor: BigSource): Money {
-    return new Money(this.amount.div(divisor), this.currency);
+    return new Money(this.amount.div(divisor), this.currency, this.roundingMode);
   }
 
   compare(money: Money): Comparison {
